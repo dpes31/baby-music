@@ -539,8 +539,8 @@
                                         class="hidden text-xs bg-slate-200 text-slate-700 hover:bg-slate-300 px-3 py-1.5 rounded-full font-bold flex items-center transition-colors">
                                         <span class="material-symbols-outlined text-sm mr-1">refresh</span> 다시 뽑기
                                     </button>
-                                    <button onclick="copyText('result-lyrics')"
-                                        class="text-slate-400 hover:text-secondary bg-white shadow-sm border border-slate-200 p-2 rounded-xl transition-colors"
+                                    <button id="btn-copy-lyrics" onclick="copyText('result-lyrics')"
+                                        class="hidden text-slate-400 hover:text-secondary bg-white shadow-sm border border-slate-200 p-2 rounded-xl transition-colors"
                                         title="가사 복사하기">
                                         <span class="material-symbols-outlined text-sm">content_copy</span>
                                     </button>
@@ -1191,6 +1191,7 @@ ${overridePayload.baseStyle}, (이 괄호를 지우고 방금 제미나이가 2.
                     lyricBox.classList.remove('hidden');
                     setTimeout(() => lyricBox.classList.remove('typing-cursor'), 2000);
                     btnGen.innerHTML = '<span class="material-symbols-rounded mr-2">check_circle</span> 가사 마법 수신 성공';
+                    document.getElementById('btn-copy-lyrics').classList.remove('hidden'); // 성공 시 복사 버튼 표시
                     btnGen.disabled = false;
                     btnRegen.disabled = false;
                     setTimeout(() => { btnGen.innerHTML = btnOrigHTML; }, 2000);
@@ -1252,8 +1253,14 @@ ${overridePayload.baseStyle}, (이 괄호를 지우고 방금 제미나이가 2.
                         alert("✓ Style 복사 완료!\nSuno AI의 'Style of Music' 칸에 붙여넣으세요.");
                     } else if (elemId === 'prompt-exclude') {
                         alert("✓ Exclude Styles 복사 완료!\nSuno AI의 'Exclude Styles' 칸에 붙여넣으세요.");
-                    } else {
+                    } else if (elemId === 'prompt-thumbnail') {
+                        alert("✓ 썸네일 복사 완료!");
+                    } else if (elemId === 'prompt-video') {
+                        alert("✓ 무한 루프 영상 프롬프트 복사 완료!");
+                    } else if (elemId === 'result-lyrics') {
                         alert("✓ 가사 복사 완료!\nSuno AI의 'Lyrics' 칸에 붙여넣으세요.");
+                    } else {
+                        alert("✓ 텍스트 복사 완료!");
                     }
                 });
 
