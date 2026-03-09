@@ -392,68 +392,13 @@
                             선택하지 않아도 AI가 알아서 알맞게 맞춰줍니다. 원하는 요소만 골라보세요!
                         </div>
 
-                        <!-- Step 3: 보컬 다중 선택 -->
-                        <section>
-                            <h2 class="font-bold text-lg text-slate-800 flex flex-col mb-4">
-                                <div class="flex items-center">
-                                    <span
-                                        class="material-symbols-outlined text-rose-500 mr-2 text-2xl">record_voice_over</span>
-                                    3. 상세 보컬 설정
-                                </div>
-                                <span class="text-xs text-slate-500 font-normal mt-1 ml-8">중복 선택이 가능하며, 선택 시 기본 보컬 대신
-                                    적용됩니다.</span>
-                            </h2>
-                            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
-                                <div>
-                                    <input type="checkbox" name="ex_vocal" id="ev-momdad"
-                                        value="Warm Female and Male Narrator, kids song singer" class="hidden peer/ev1">
-                                    <label for="ev-momdad"
-                                        class="glass-panel peer-checked/ev1:border-primary peer-checked/ev1:bg-primary/10 peer-checked/ev1:text-primary flex flex-col justify-center p-3 h-full rounded-xl cursor-pointer hover:border-primary/40 transition-colors text-slate-600">
-                                        <span class="font-bold text-xs text-center">포근한 엄마 아빠</span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" name="ex_vocal" id="ev-friends"
-                                        value="Cute Child Voice, playful, nursery rhyme" class="hidden peer/ev2">
-                                    <label for="ev-friends"
-                                        class="glass-panel peer-checked/ev2:border-primary peer-checked/ev2:bg-primary/10 peer-checked/ev2:text-primary flex flex-col justify-center p-3 h-full rounded-xl cursor-pointer hover:border-primary/40 transition-colors text-slate-600">
-                                        <span class="font-bold text-xs text-center">귀여운 또래 친구</span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" name="ex_vocal" id="ev-cartoon"
-                                        value="Cartoon Character Voice, kids music" class="hidden peer/ev3">
-                                    <label for="ev-cartoon"
-                                        class="glass-panel peer-checked/ev3:border-primary peer-checked/ev3:bg-primary/10 peer-checked/ev3:text-primary flex flex-col justify-center p-3 h-full rounded-xl cursor-pointer hover:border-primary/40 transition-colors text-slate-600">
-                                        <span class="font-bold text-xs text-center">명랑한 애니메이션</span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" name="ex_vocal" id="ev-choir"
-                                        value="Children's Choir, kids song" class="hidden peer/ev4">
-                                    <label for="ev-choir"
-                                        class="glass-panel peer-checked/ev4:border-primary peer-checked/ev4:bg-primary/10 peer-checked/ev4:text-primary flex flex-col justify-center p-3 h-full rounded-xl cursor-pointer hover:border-primary/40 transition-colors text-slate-600">
-                                        <span class="font-bold text-xs text-center">천사들의 합창</span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" name="ex_vocal" id="ev-kpop"
-                                        value="Trendy K-Pop Idol Vocal but for kids song" class="hidden peer/ev5">
-                                    <label for="ev-kpop"
-                                        class="glass-panel peer-checked/ev5:border-primary peer-checked/ev5:bg-primary/10 peer-checked/ev5:text-primary flex flex-col justify-center p-3 h-full rounded-xl cursor-pointer hover:border-primary/40 transition-colors text-slate-600">
-                                        <span class="font-bold text-xs text-center">트렌디 K-Pop 아이돌</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Step 4: 디테일 상호작용 -->
+                        <!-- Step 3: 디테일 상호작용 (기존 Step 4) -->
                         <section>
                             <h2 class="font-bold text-lg text-slate-800 flex flex-col mb-4">
                                 <div class="flex items-center">
                                     <span
                                         class="material-symbols-outlined text-amber-500 mr-2 text-2xl">auto_awesome</span>
-                                    4. 특수 가사 디테일 추가
+                                    3. 특수 가사 디테일 추가
                                 </div>
                             </h2>
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -499,11 +444,11 @@
                             </div>
                         </section>
 
-                        <!-- Step 5: 창의력 조절 -->
+                        <!-- Step 4: 창의력 조절 (기존 Step 5) -->
                         <section>
                             <h2 class="font-bold text-lg text-slate-800 flex flex-col mb-4">
                                 <div class="flex items-center">
-                                    <span class="material-symbols-outlined text-purple-500 mr-2 text-2xl">draw</span> 5.
+                                    <span class="material-symbols-outlined text-purple-500 mr-2 text-2xl">draw</span> 4.
                                     가사의
                                     어휘 다채로움 조절
                                 </div>
@@ -657,7 +602,7 @@
                                     유튜브 썸네일 프롬프트
                                 </h4>
                                 <textarea id="prompt-thumbnail" readonly
-                                    class="w-full text-[0.7rem] font-mono text-slate-500 bg-slate-50 rounded-xl p-3 resize-none h-[120px] outline-none leading-relaxed border border-slate-100 custom-scrollbar">A magical, multi-layered 3D papercraft illustration of a cute little girl smiling and holding hands with a friendly, colorful octopus, playfully keeping her fingers away from her mouth. In the foreground, a vintage turntable and a stylish colorful vinyl record crafted from cut-out paper are playing, with a beautifully designed music album cover leaning against it. Vibrant underwater pastel colors, cheerful deep blues and bright corals, clean light aqua background. Highly detailed paper textures, soft glowing backlights illuminating the edges of the paper layers. Render the Korean text "**쪽쪽 안녕 문어송**" clearly on the album cover. High quality, cozy lighting, 16:9 aspect ratio.</textarea>
+                                    class="w-full text-[0.7rem] font-mono text-slate-500 bg-slate-50 rounded-xl p-3 resize-none h-[120px] outline-none leading-relaxed border border-slate-100 custom-scrollbar break-words whitespace-pre-wrap">A magical, multi-layered 3D papercraft illustration of a cute little girl smiling and holding hands with a friendly, colorful octopus, playfully keeping her fingers away from her mouth. In the foreground, a vintage turntable and a stylish colorful vinyl record crafted from cut-out paper are playing, with a beautifully designed music album cover leaning against it. Vibrant underwater pastel colors, cheerful deep blues and bright corals, clean light aqua background. Highly detailed paper textures, soft glowing backlights illuminating the edges of the paper layers. Render the Korean text "**쪽쪽 안녕 문어송**" clearly on the album cover. High quality, cozy lighting, 16:9 aspect ratio.</textarea>
                             </div>
 
                             <!-- 무한 루프 영상 프롬프트 (제미나이 돝영상 등 비디오 생성용) -->
@@ -675,7 +620,7 @@
                                     무한 루프 영상 프롬프트
                                 </h4>
                                 <textarea id="prompt-video" readonly
-                                    class="w-full text-[0.7rem] font-mono text-slate-500 bg-slate-50 rounded-xl p-3 resize-none h-[120px] outline-none leading-relaxed border border-slate-100 custom-scrollbar">Animate the provided image as a seamless, infinite looping cinemagraph. The camera must remain absolutely static with zero panning, zooming, or tilting. In the foreground, the papercraft vintage turntable and vinyl record must spin smoothly and continuously at a constant, steady speed. The little girl and the octopus should have only very subtle, gentle breathing motions. The papercraft underwater elements and soft glowing backlights should softly and continuously undulate. No sudden movements, no scene changes, no new elements appearing. Make the first frame and the last frame perfectly match for a seamless 8-second loop. Relaxing, calming, and cozy atmosphere.</textarea>
+                                    class="w-full text-[0.7rem] font-mono text-slate-500 bg-slate-50 rounded-xl p-3 resize-none h-[120px] outline-none leading-relaxed border border-slate-100 custom-scrollbar break-words whitespace-pre-wrap">Animate the provided image as a seamless, infinite looping cinemagraph. The camera must remain absolutely static with zero panning, zooming, or tilting. In the foreground, the papercraft vintage turntable and vinyl record must spin smoothly and continuously at a constant, steady speed. The little girl and the octopus should have only very subtle, gentle breathing motions. The papercraft underwater elements and soft glowing backlights should softly and continuously undulate. No sudden movements, no scene changes, no new elements appearing. Make the first frame and the last frame perfectly match for a seamless 8-second loop. Relaxing, calming, and cozy atmosphere.</textarea>
                             </div>
                         </div>
 
@@ -692,7 +637,7 @@
                                 Style of Music
                             </h4>
                             <textarea id="result-style" readonly
-                                class="w-full text-sm font-mono text-slate-600 bg-slate-50 rounded-xl p-3 resize-none h-16 outline-none leading-relaxed placeholder:text-slate-300 border border-slate-100">노래를 생성해주세요...</textarea>
+                                class="w-full text-sm font-mono text-slate-600 bg-slate-50 rounded-xl p-3 resize-none min-h-[5rem] overflow-y-auto outline-none leading-relaxed placeholder:text-slate-300 border border-slate-100 break-words whitespace-pre-wrap">노래를 생성해주세요...</textarea>
                         </div>
 
                         <!-- [3] SUNO More Options 가이드 -->
@@ -982,14 +927,8 @@
                     finalVocals.push("Confident Teen Singer");
                 }
 
+                // --- 전문가 모드 로직 (Detail, Temp) ---
                 if (isExpertMode) {
-                    const exVocals = Array.from(document.querySelectorAll('input[name="ex_vocal"]:checked')).map(el => el.value);
-                    if (exVocals.length > 0) {
-                        finalVocals = exVocals;
-                        // 전문가가 설정한 보컬에도 만약의 경우를 대비해 키즈 보호 태그를 몰래 강제 스탬핑
-                        finalVocals.push("(Korean kids song style)");
-                    }
-
                     const exDetails = Array.from(document.querySelectorAll('input[name="ex_detail"]:checked')).map(el => el.value);
                     if (exDetails.includes('ono')) finalOno = true;
                     if (exDetails.includes('call')) finalCall = true;
@@ -1004,7 +943,6 @@
                 // --- 3. Style 태그 프론트엔드 표출 조립 ---
                 let styleTags = [bInst, finalVocals.join(", "), 'Crisp mixing, wide stereo image, clean minimalist mix, clear Korean pronunciation'];
                 let finalStyleRaw = styleTags.filter(Boolean).join(', ');
-                if (finalStyleRaw.length > 118) { finalStyleRaw = finalStyleRaw.substring(0, 118) + '..'; }
                 document.getElementById('result-style').value = finalStyleRaw;
 
                 // --- 4. LLM Prompt 조립 (V25 Master Controller) ---
@@ -1045,9 +983,9 @@
 
                 // (3) 곡 구조 및 보컬 에러 방지 백신
                 gPrompt += `<노래 구조 강제 템플릿 및 보컬 에러 방지 (CRITICAL)>\n`;
-                gPrompt += `- Suno V5 버그 방지를 위해, 모든 구조 태그(예: [Verse 1], [Chorus]) 아래의 실질 가사는 **무조건 4줄 이내**로 끊어서 작성하라. 절대 섹션당 4줄을 넘기지 마라!\n\n`;
-
-                gPrompt += `[Intro: short, under 15 seconds]\n(인트로 지루방지 규칙(Intro under 15s): 도입부 상황 설명 1줄. 허밍 방지를 위해 반드시 짧은 악기를 선언하고 곧바로 훅/보컬이 나오도록 배치)\n\n`;
+                gPrompt += `- 가사 4줄 제한 (CRITICAL): Suno V5 엔진의 보컬 성별 변경 버그를 방지하기 위해, 모든 구조 태그(예: [Verse 1], [Chorus]) 아래의 실질 가사는 무조건 4줄 이내로 끊어서 작성하라. 내용이 길면 [Verse 2]로 새로 태그를 열어라.\n\n`;
+                gPrompt += `- 도입부 통제 및 종결: 아이들의 이탈을 막기 위해 [Intro]는 15초 이내로 짧게 설정하고 전주 직후 곧바로 [Chorus]나 강력한 [Hook]이 등장하게 하라. 그리고 가사 맨 마지막에는 주저없이 [End] 태그를 넣어라.\n\n`;
+                gPrompt += `[Intro: short, under 15 seconds]\n(도입부 상황 설명 1줄. 허밍 방지를 위해 반드시 짧은 악기를 선언할 것)\n\n`;
                 gPrompt += `[Verse 1]\n(첫번째 행동. 4줄 제한 지킬 것. 호흡을 위한 쉼표 삽입)\n\n`;
                 gPrompt += `[Pre-Chorus: building energy]\n(긴장감 고조)\n\n`;
                 gPrompt += `[Chorus: Energy: High, explosive, anthemic]\n(에너지를 폭발시키는 클라이맥스 훅. 동요 특유의 무한 반복 대유행구)\n\n`;
@@ -1182,9 +1120,16 @@
                     lyricBox.value = parsed.lyrics.trim();
                     lyricBox.classList.add('typing-cursor');
 
-                    // V25: 제미나이가 1줄로 강제 렌더링한 Style 태그를 UI에 최종 반영
+                    // V25+: JSON 파싱 후처리 (스타일 태그 누락 방어 및 줄바꿈 치환)
                     if (parsed.style) {
-                        document.getElementById('result-style').value = parsed.style.trim();
+                        let finalStyle = parsed.style.trim();
+                        // 제미나이가 프로덕션 태그를 빼먹었을 경우 강제로 덧붙임
+                        if (!finalStyle.includes("Crisp mixing")) {
+                            finalStyle += ", Crisp mixing, wide stereo image, clean minimalist mix, clear Korean pronunciation";
+                        }
+                        // 줄바꿈이 혹시라도 섞여 있다면 쉼표로 치환 (Suno 에러 방지)
+                        finalStyle = finalStyle.replace(/\n/g, ', ');
+                        document.getElementById('result-style').value = finalStyle;
                     }
 
                     // 썸네일/비디오 프롬프트 동적 치환
