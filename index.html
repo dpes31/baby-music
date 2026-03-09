@@ -290,6 +290,63 @@
                     </div>
                 </div>
 
+                <!-- Age Selection Grid (Step 1.5) -->
+                <div>
+                    <h2 class="font-bold text-xl text-slate-800 flex items-center px-1 mb-5 tracking-tight">
+                        <span class="material-symbols-outlined text-rose-500 mr-2 text-2xl">child_care</span>
+                        1.5 아이의 연령대(개월 수)는 어떻게 되나요?
+                    </h2>
+                    <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 w-full">
+                        <!-- Age 0-12 -->
+                        <div>
+                            <input type="radio" name="targetAge" id="a-0-12" value="stage1" class="hidden peer/a1">
+                            <label for="a-0-12"
+                                class="glass-panel p-3 rounded-xl flex flex-col items-center gap-2 cursor-pointer border-2 border-transparent peer-checked/a1:border-rose-400 peer-checked/a1:bg-rose-50 hover:scale-[1.02] transition-all group text-center h-full">
+                                <span class="font-bold text-[0.85rem] text-slate-800 leading-tight">🍼 0~12개월</span>
+                                <span class="text-[0.65rem] text-slate-500 mt-auto leading-tight">포근한 자장가톤</span>
+                            </label>
+                        </div>
+                        <!-- Age 13-24 -->
+                        <div>
+                            <input type="radio" name="targetAge" id="a-13-24" value="stage2" class="hidden peer/a2"
+                                checked>
+                            <label for="a-13-24"
+                                class="glass-panel p-3 rounded-xl flex flex-col items-center gap-2 cursor-pointer border-2 border-transparent peer-checked/a2:border-rose-400 peer-checked/a2:bg-rose-50 hover:scale-[1.02] transition-all group text-center h-full">
+                                <span class="font-bold text-[0.85rem] text-slate-800 leading-tight">🐣 13~24개월</span>
+                                <span class="text-[0.65rem] text-slate-500 mt-auto leading-tight">상어가족 스타일</span>
+                            </label>
+                        </div>
+                        <!-- Age 25-36+ -->
+                        <div>
+                            <input type="radio" name="targetAge" id="a-25-36" value="stage3" class="hidden peer/a3">
+                            <label for="a-25-36"
+                                class="glass-panel p-3 rounded-xl flex flex-col items-center gap-2 cursor-pointer border-2 border-transparent peer-checked/a3:border-rose-400 peer-checked/a3:bg-rose-50 hover:scale-[1.02] transition-all group text-center h-full">
+                                <span class="font-bold text-[0.85rem] text-slate-800 leading-tight">🏃 25~36개월</span>
+                                <span class="text-[0.65rem] text-slate-500 mt-auto leading-tight">율동과 떼창 유도</span>
+                            </label>
+                        </div>
+                        <!-- Age 4-7 Yrs -->
+                        <div>
+                            <input type="radio" name="targetAge" id="a-4-7y" value="stage4" class="hidden peer/a4">
+                            <label for="a-4-7y"
+                                class="glass-panel p-3 rounded-xl flex flex-col items-center gap-2 cursor-pointer border-2 border-transparent peer-checked/a4:border-rose-400 peer-checked/a4:bg-rose-50 hover:scale-[1.02] transition-all group text-center h-full">
+                                <span class="font-bold text-[0.85rem] text-slate-800 leading-tight">🍭 만 4~7세</span>
+                                <span class="text-[0.65rem] text-slate-500 mt-auto leading-tight">화려한 전개 (프레스토)</span>
+                            </label>
+                        </div>
+                        <!-- Age 8-12 Yrs -->
+                        <div>
+                            <input type="radio" name="targetAge" id="a-8-12y" value="stage5" class="hidden peer/a5">
+                            <label for="a-8-12y"
+                                class="glass-panel p-3 rounded-xl flex flex-col items-center gap-2 cursor-pointer border-2 border-transparent peer-checked/a5:border-rose-400 peer-checked/a5:bg-rose-50 hover:scale-[1.02] transition-all group text-center h-full">
+                                <span class="font-bold text-[0.85rem] text-slate-800 leading-tight">🎧 만 8~12세</span>
+                                <span class="text-[0.65rem] text-slate-500 mt-auto leading-tight">세련된 틴 팝(Teen
+                                    Pop)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Theme Input (Step 2) -->
                 <div class="flex flex-col gap-4 mt-2">
                     <h2 class="font-bold text-xl text-slate-800 flex items-center px-1 tracking-tight">
@@ -647,10 +704,19 @@
                             </h4>
                             <div class="text-[0.85rem] text-slate-600 space-y-3 mt-4">
                                 <div class="flex justify-between items-center border-b border-slate-200/50 pb-2">
+                                    <div class="flex flex-col">
+                                        <span class="font-bold text-rose-500 text-xs">🚫 Exclude Styles (필수)</span>
+                                        <span class="text-[0.6rem] text-slate-400 mt-0.5">음질 저하 및 기계음 원천 차단</span>
+                                    </div>
+                                    <span
+                                        class="bg-rose-50 px-2 py-1 rounded-md text-slate-600 font-mono text-[0.65rem] border border-rose-100 text-right leading-tight max-w-[130px] shadow-sm">hiss,
+                                        hissing, shimmer, noise, distortion, mumble</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-slate-200/50 pb-2">
                                     <span class="font-bold text-slate-700">Vocal Gender</span>
                                     <span
                                         class="bg-white px-3 py-1 rounded-lg shadow-sm text-slate-700 font-bold border border-slate-100 text-xs text-center">노래
-                                        테마에 어울리게 선택</span>
+                                        테마에 맞춰 선택</span>
                                 </div>
                                 <div class="flex justify-between items-center border-b border-slate-200/50 pb-2">
                                     <span class="font-bold text-slate-700">Lyrics Mode (필수)</span>
@@ -839,7 +905,7 @@
             function buildAndFetch() {
                 // --- 1. Basic(기본) 모드 수집 ---
                 const purpose = document.querySelector('input[name="purpose"]:checked').value;
-                // 노래 길이(Duration) 수집 코드 완전히 제거
+                const targetAge = document.querySelector('input[name="targetAge"]:checked').value; // V25 월령 수집
 
                 let themeStrRaw = themeInput.value.trim();
                 let rawThemeForMedia = themeStrRaw || "아이의 즐거운 일상";
@@ -869,6 +935,7 @@
                     bTemp = 0.6; bTopP = 0.6; bFreq = 0.0; // 수면: 안정적(낮은 Temp, Top_p), 반복 허용(0.0 Freq)
                     bMood = "수면 유도, 백색 소음, 마음이 차분해지는 휴식 시간의 분위기를 살려라.";
                     bOnoDir = "- 새근새근, 자장자장, 스르륵 같은 잔잔하고 부드러운 수면용 의성어/의태어를 듬뿍 넣어.\\n";
+                    bCaution += "\\n- (주의) 자장가이므로 가사 섹션 태그에 [Vulnerable], [Calm], [Whisper] 등을 명시하여 AI가 고음을 지르는(Belting) 현상을 원천 차단하라.";
                 }
                 else if (purpose === 'dance') {
                     bVocal = "Cartoon Character Voice, kids music singer"; bInst = "115 BPM, bouncy kids pop, nursery rhyme, bright synths";
@@ -894,6 +961,27 @@
                 let finalTemp = bTemp;
                 let finalOno = false; let finalCall = false; let finalSfx = false;
 
+                // V25 월령별 악기 및 BPM 마스터 제어 (Overriding)
+                if (targetAge === 'stage1') {
+                    // 0~12개월: 백색소음 수면 테라피 공식 통일
+                    bInst = "58 BPM, Twinkling Celesta, Harp resonance, 3D spatial audio, zero percussion, simple stepwise melody, " + bInst;
+                    finalVocals.push("intimate female whisper", "Very soft volume");
+                } else if (targetAge === 'stage2') {
+                    // 13~24개월: 상아가족 스타일 타격감
+                    bInst = "110 BPM, Pentatonic scale, Bright Marimba, Toy Piano, childlike choir, " + bInst;
+                } else if (targetAge === 'stage3') {
+                    // 25개월 이상: 신나는 댄스
+                    bInst = "130 BPM, bright synths, funky bass, explosive drop, Key Change: Up one semitone, " + bInst;
+                } else if (targetAge === 'stage4') {
+                    // 만 4~7세: 예비 학교 K-Pop
+                    bInst = "170 BPM, Upbeat Electro-pop, complex harmonic shifts, bright pop female vocal, " + bInst;
+                    finalVocals.push("Pop Idol Vocal");
+                } else if (targetAge === 'stage5') {
+                    // 만 8~12세: 틴 팝
+                    bInst = "115 BPM, Kidz Bop style, Teen Pop, energetic, radio-friendly, modern pop polish, " + bInst;
+                    finalVocals.push("Confident Teen Singer");
+                }
+
                 if (isExpertMode) {
                     const exVocals = Array.from(document.querySelectorAll('input[name="ex_vocal"]:checked')).map(el => el.value);
                     if (exVocals.length > 0) {
@@ -914,42 +1002,70 @@
                 }
 
                 // --- 3. Style 태그 프론트엔드 표출 조립 ---
-                let styleTags = [bInst, finalVocals.join(", "), 'clear Korean pronunciation'];
+                let styleTags = [bInst, finalVocals.join(", "), 'Crisp mixing, wide stereo image, clean minimalist mix, clear Korean pronunciation'];
                 let finalStyleRaw = styleTags.filter(Boolean).join(', ');
                 if (finalStyleRaw.length > 118) { finalStyleRaw = finalStyleRaw.substring(0, 118) + '..'; }
                 document.getElementById('result-style').value = finalStyleRaw;
 
-                // --- 4. LLM Prompt 조립 ---
-                let gPrompt = `너는 핑크퐁, 뽀로로 전담 수석 작사가야.\n`;
+                // --- 4. LLM Prompt 조립 (V25 Master Controller) ---
+                let gPrompt = `너는 영유아 심리 발달 단계(월령별 인지/청각 특성)와 K-Pop 동요, 수면 치료 음악에 정통한 최고 수준의 프로듀서이자 핑크퐁/뽀로로 전담 수석 작사가야.\n`;
                 gPrompt += `주제: "${themeStr}" 에 관한 영유아 창작 동요 가사 전집을 작성해.\n\n`;
                 gPrompt += `<음악 무드 및 분위기 설계(필수)>\n`;
                 gPrompt += `- ${bMood}\n`;
                 gPrompt += `- ${bCaution}\n\n`;
 
-                // (2) 하이픈 과도 삽입 방지를 위한 강력한 프롬프트 지시어 수정
-                gPrompt += `<작사 핵심 지침>\n`;
-                gPrompt += `- 사람 이름이나 일반적인 문장에는 절대로 하이픈(-)이나 부자연스러운 기호를 쓰지 마라. (예: "서하야"가 맞고 "서-하-야-"는 아주 틀리다)\n`;
-                gPrompt += `- 율동감을 위한 발음 연장(길게 부르는 곳)은 오직 '주욱-주욱', '자-장' 같은 의성어/의태어나, 후렴구 핵심 단어에만 제한적으로 하이픈(-)을 사용하여라.\n`;
-                if (finalOno) gPrompt += bOnoDir;
-                if (finalCall) gPrompt += `- 소괄호 ( )를 사용해 코러스나 아이가 짧게 대답하는 "티키타카" 여백을 넣어. (예시: ( Child says: 네! ))\n`;
-                if (finalSfx) gPrompt += `- 대괄호 구조 옆에 (강아지 짖는 소리) 같은 효과음 지시어 추가 허용.\n\n`;
+                // V25+ 월령별 가변 타겟팅 지침 로직 가동
+                gPrompt += `<월령별 작사 핵심 타겟팅 지침 (CRITICAL)>\n`;
+                if (targetAge === 'stage1') {
+                    // 0~12개월
+                    gPrompt += `- 타겟 청취자는 0~12개월 영아다. 인지적 서사보다 '소리 질감(백색소음)'이 최우선이므로 가사 글자 수를 극단적으로 쳐내 짧게 만들고, '자장자장', '스르륵' 같은 부드러운 언어 위주로 작성하라.\n`;
+                } else if (targetAge === 'stage2') {
+                    // 13~24개월
+                    gPrompt += `- 타겟 청취자는 13~24개월 (상어가족 타겟층)이다. 가사의 전체 분량(텍스트 길이)을 무조건 일반적인 양 대비 절반(50%) 이하로 대폭 축소하고, 발음하기 쉬운 단일 음절의 극단적인 반복 구조(Repetition)를 취하라.\n`;
+                } else if (targetAge === 'stage3') {
+                    // 25~36개월
+                    gPrompt += `- 타겟 청취자는 25~36개월 이상 유아다. 기승전결 서사가 들어가며, 행동을 유도하는 신나는 유아 체조곡/어린이 K-Pop 율동곡처럼 작성하라. 괄호 ( )를 활용해 떼창이나 추임새(예: (점프!))를 유도하라.\n`;
+                } else if (targetAge === 'stage4') {
+                    // 만 4~7세
+                    gPrompt += `- 타겟 청취자는 만 4~7세 어린이(유치원생)다. 어휘력을 뽐낼 수 있는 창의적이고 다채로운 단어를 쓰고, 마치 마법소녀의 테마곡처럼 기승전결이 확실하고 에너지가 넘치는 세련된 가창곡을 작성해라. (반복 강박에서 벗어날 것)\n`;
+                } else if (targetAge === 'stage5') {
+                    // 만 8~12세
+                    gPrompt += `- 타겟 청취자는 만 8~12세 초등학생(Tween)이다. 유치한 단어나 구연동화식의 말투는 절대 배제하고, 깔끔하게 다듬어진 틴팝(Teen Pop) 가사나 라디오 친화적인 트렌디한 K-Pop 아이돌 가사로 작성하라.\n`;
+                }
 
-                // (3) 곡 구조 통일 (사용자 길이 라디오 옵션 삭제 -> 정석 동요 뼈대 규격화)
-                gPrompt += `<노래 구조 강제 템플릿 (해당 대괄호 뼈대를 반드시 지켜서 2분 내외 곡 완성)>\n`;
-                gPrompt += `[Intro: soft melody]\n(도입부 상황 설명 1줄)\n\n`;
-                gPrompt += `[Verse 1]\n(첫번째 행동 및 상황)\n\n`;
-                gPrompt += `[Chorus: highly repetitive hook, energetic]\n(동요 특유의 무한 반복 가능한 중독성 강한 훅)\n\n`;
-                gPrompt += `[Verse 2]\n(두번째 행동 상황 확장)\n\n`;
-                gPrompt += `[Chorus]\n(앞과 동일한 훅 반복)\n\n`;
-                gPrompt += `[Outro: fading out]\n(여운을 남기는 짧은 마무리)\n`;
+                // 공통 필수 언어 백신 및 기호 제어 로직 (Suno V5 대응)
+                gPrompt += `- 기호 호흡 제어: AI가 랩하듯 급하게 부르는 것을 막기 위해 가사 중간에 쉼표(,)를 активно 사용해 숨 쉴 공간을 확보하라.\n`;
+                gPrompt += `- 틸드(~) 기호 강제: '스르르르~'나 '야호~' 같이 음표를 길게 끌고 갈(여운을 남길) 가사는 단어 맨 끝에 무조건 틸드(~) 기호를 붙여 엔진이 해당 노트를 길게 부르도록 유도하라.\n`;
+                gPrompt += `- 괄호 통제 오류 방지 (CRITICAL): 대괄호 [ ]는 [Female Vocal], [Whisper] 같은 기계 연출 명령어에만 쓰고, 소괄호 ( )는 (박수!) 처럼 아이가 백보컬로 부를 추임새에만 써라. 소괄호 안에 기계 명령어를 넣는 오류를 절대 범하지 마라!\n`;
+                gPrompt += `- 언어 공학: 한국어 의성어/의태어 작성 시 반드시 바로 옆에 괄호를 치고 콩글리시 영문 발음 기호를 명시하라. (예: 방글방글(banggeul-banggeul))\n`;
+
+                if (finalOno) gPrompt += `\n${bOnoDir}`;
+                if (finalCall && targetAge !== 'stage1') gPrompt += `- 빈 공간 여백(티키타카): ( )를 사용해 코러스 여백을 줘라.\n`;
+                if (finalSfx) gPrompt += `- 대괄호 구조 옆에 (강아지 짖는 소리) 같은 효과음 지시어 추가 1회 허용.\n\n`;
+
+                // (3) 곡 구조 및 보컬 에러 방지 백신
+                gPrompt += `<노래 구조 강제 템플릿 및 보컬 에러 방지 (CRITICAL)>\n`;
+                gPrompt += `- Suno V5 버그 방지를 위해, 모든 구조 태그(예: [Verse 1], [Chorus]) 아래의 실질 가사는 **무조건 4줄 이내**로 끊어서 작성하라. 절대 섹션당 4줄을 넘기지 마라!\n\n`;
+
+                gPrompt += `[Intro: short, under 15 seconds]\n(인트로 지루방지 규칙(Intro under 15s): 도입부 상황 설명 1줄. 허밍 방지를 위해 반드시 짧은 악기를 선언하고 곧바로 훅/보컬이 나오도록 배치)\n\n`;
+                gPrompt += `[Verse 1]\n(첫번째 행동. 4줄 제한 지킬 것. 호흡을 위한 쉼표 삽입)\n\n`;
+                gPrompt += `[Pre-Chorus: building energy]\n(긴장감 고조)\n\n`;
+                gPrompt += `[Chorus: Energy: High, explosive, anthemic]\n(에너지를 폭발시키는 클라이맥스 훅. 동요 특유의 무한 반복 대유행구)\n\n`;
+                gPrompt += `[Verse 2]\n(두번째 행동 확장. 4줄 단락 제한)\n\n`;
+                gPrompt += `[Chorus: Energy: High]\n(앞과 동일한 훅 반복)\n\n`;
+                gPrompt += `[Bridge: drop in intensity]\n(잠시 쉬어가는 감정선)\n\n`;
+                gPrompt += `[Outro: resolve to tonic, slow fade]\n(안정을 주며 깔끔 마무리)\n\n`;
+                gPrompt += `[Fade Out]\n\n`;
+                gPrompt += `[End]\n\n`;
 
                 // (4) JSON 출력 강제 (썸네일/비디오 연동형)
                 gPrompt += `<출력 지침 (CRITICAL)>\n`;
                 gPrompt += `반드시 아래 JSON 형식으로만 출력할 것. 마크다운 언어나 다른 설명은 절대 금지.\n`;
                 gPrompt += `{\n`;
                 gPrompt += `  "lyrics": "작사된 전체 가사",\n`;
-                gPrompt += `  "english_visual_description": "주제를 바탕으로 메인 캐릭터(아이)의 행동을 묘사하는 구체적인 영문 프롬프트 (예: a cheerful cute little child wearing a yellow kindergarten backpack, happily waving goodbye to their parents at the front door)",\n`;
-                gPrompt += `  "song_title": "곡의 내용을 담은 짧은 한글 제목 (별표 등 기호 없이 순수 텍스트만. 예: 안녕 안녕 인사해)"\n`;
+                gPrompt += `  "style": "가사 분위기에 맞는 장르/악기/무드 쉼표 단위 영문 작성 (※주의: 절대 줄바꿈(Enter) 없이 오직 쉼표(,)로만 연결된 단 하나의 텍스트 블록으로 출력할 것. 120자 내외 제한)",\n`;
+                gPrompt += `  "english_visual_description": "곡 분위기를 잘 나타내는 [곡 상황의 디테일한 영문 시각 묘사 (배경 및 색감 포함)]",\n`;
+                gPrompt += `  "song_title": "곡의 제목이나 핵심 훅 가사 한 줄 (한국어)"\n`;
                 gPrompt += `}\n`;
 
                 // --- 4.5 유튜브 및 영상 프롬프트 실시간 동적 생성 (V18 업데이트) ---
@@ -974,7 +1090,7 @@
                 overridePayload.videoTemplate = videoTemplate;
 
                 // 비밀 주문 복사(Fallback) 시 사용자의 디테일 조작값을 투명하게 포함
-                const fallbackSecret = `✨ [Suno AI 동요 생성용 LLM 마법 주문] ✨\n아래의 전체 텍스트를 복사하여 Gemini 사이트(또는 ChatGPT) 대화창에 붙여넣으세요.\n\n========================================\n\n${gPrompt}\n\n========================================\n\n✅ 추천 결과물 세팅값 (생성된 가사를 기반으로 Suno AI에 붙여넣을 때 참고)\n- Vocal/Style: ${finalVocals.join(", ")}\n- 창의력 파라미터(Temp/Weirdness): ${finalTemp}\n- 어휘 다양성(Top_P): ${bTopP}\n- 반복 문장 방지(Frequency Penalty): ${bFreq}`;
+                const fallbackSecret = `✨ [Suno AI 동요 생성용 LLM 마법 주문] ✨\n아래의 전체 텍스트를 복사하여 Gemini 사이트(또는 ChatGPT) 대화창에 붙여넣으세요.\n\n========================================\n\n${gPrompt}\n\n========================================\n\n✅ 추천 결과물 세팅값 (생성된 가사를 기반으로 Suno AI에 붙여넣을 때 참고)\n- Vocal/Style: ${finalVocals.join(", ")}\n- 🚫 Exclude Styles: hiss, hissing, shimmer, noise, distortion, mumble\n- 창의력 파라미터(Temp/Weirdness): ${finalTemp}\n- 어휘 다양성(Top_P): ${bTopP}\n- 반복 문장 방지(Frequency Penalty): ${bFreq}`;
                 document.getElementById('hidden-prompt').value = fallbackSecret; // 수동 복사용
 
                 document.getElementById('result-container').classList.remove('opacity-30', 'pointer-events-none');
@@ -1057,6 +1173,7 @@
                         console.error("JSON 파싱 에러 (Fallback 처리)", e);
                         parsed = {
                             lyrics: generatedText.replace(/`/g, "").replace(/^.*오케이.*$/gm, ""),
+                            style: document.getElementById('result-style').value || "120 BPM, kids pop", // V25 Fallback 추가
                             english_visual_description: "(A cute little child having fun)",
                             song_title: "엄마의 오르골"
                         };
@@ -1064,6 +1181,11 @@
 
                     lyricBox.value = parsed.lyrics.trim();
                     lyricBox.classList.add('typing-cursor');
+
+                    // V25: 제미나이가 1줄로 강제 렌더링한 Style 태그를 UI에 최종 반영
+                    if (parsed.style) {
+                        document.getElementById('result-style').value = parsed.style.trim();
+                    }
 
                     // 썸네일/비디오 프롬프트 동적 치환
                     window.currentVisualDesc = parsed.english_visual_description;
