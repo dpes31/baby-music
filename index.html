@@ -666,10 +666,10 @@
                                     </div>
                                     <div class="flex items-center gap-1.5">
                                         <input type="text" id="prompt-exclude" readonly
-                                            value="hiss, hissing, shimmer, noise, distortion, mumble"
+                                            value="minor key, dissonance, eerie, creepy, huge reverb, echo, shimmer, hiss, metallic, belting, high pitch, distortion, noise, drum machine"
                                             class="bg-rose-50 px-2 py-1.5 rounded-lg text-slate-600 font-mono text-[0.65rem] border border-rose-100/50 text-right leading-tight max-w-[130px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] outline-none overflow-x-auto whitespace-nowrap hidden sm:block">
                                         <!-- 모바일용 짧은 텍스트 -->
-                                        <input type="text" readonly value="hiss, hissing..."
+                                        <input type="text" readonly value="minor key, dissonance..."
                                             class="bg-rose-50 px-2 py-1.5 rounded-lg text-slate-600 font-mono text-[0.65rem] border border-rose-100/50 text-right leading-tight w-[80px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] outline-none block sm:hidden">
                                         <button onclick="copyText('prompt-exclude')"
                                             class="text-slate-400 hover:text-rose-500 bg-white border border-slate-200 p-1.5 rounded-lg transition-colors shadow-sm ml-1"
@@ -946,11 +946,11 @@
                 // 구성: BPM + 코어 장르 + 핵심 보컬 톤 (절대 변하지 않는 시스템 고정값)
                 const styleMatrix = {
                     sleep: {
-                        stage1: "58 BPM, ambient lullaby, intimate female whisper, zero percussion",
-                        stage2: "60 BPM, music box lullaby, very soft female vocal",
-                        stage3: "65 BPM, acoustic lullaby, warm motherly vocal",
-                        stage4: "70 BPM, gentle fairy tale lullaby, soft storyteller vocal",
-                        stage5: "75 BPM, lo-fi chill relax, calm smooth vocal"
+                        stage1: "58 BPM, ambient lullaby, intimate female whisper, zero percussion, felt piano, warm analog pads, consonant, positive valence, small room acoustics, rolled-off highs, tape warmth, dry mix",
+                        stage2: "60 BPM, music box lullaby, very soft female vocal, twinkling celesta, soft harp, consonant, positive valence, cozy room reverb, rolled-off highs, tape warmth, dry mix",
+                        stage3: "65 BPM, acoustic lullaby, warm motherly vocal, fingerpicked acoustic guitar, soft chimes, consonant, positive valence, small room acoustics, rolled-off highs, tape warmth, dry mix",
+                        stage4: "70 BPM, gentle fairy tale lullaby, soft storyteller vocal, sweeping soft strings, magical glockenspiel, consonant, cozy room reverb, warm acoustic tone",
+                        stage5: "75 BPM, lo-fi chill relax, calm smooth vocal, warm rhodes piano, vinyl crackle, subtle slow beat, consonant, relaxing atmosphere, dry mix"
                     },
                     dance: {
                         stage1: "95 BPM, soft bouncy baby pop, cute baby voice",
@@ -1004,9 +1004,11 @@
 
                 gPrompt += `<곡 구조 및 기호 호흡 제어 (Suno V5 버그 방지 - CRITICAL)>\n`;
                 gPrompt += `- [Intro] 통합: 인트로는 [Intro: short, under 15 seconds, 악기 묘사]처럼 단 하나의 대괄호 안에 모든 지시어를 묶어라. 두 줄로 나누지 마라.\n`;
-                gPrompt += `- 가사 4줄 제한: 보컬 에러 방지를 위해 [Verse 1], [Chorus] 등 모든 구조 태그 아래의 실질 가사는 무조건 4줄 이내로 끊어서 작성하라.\n`;
-                gPrompt += `- 기호 호흡 제어: 가사 문장 맨 끝에는 **절대 쉼표(,)나 마침표(.)를 찍지 마라.** (Suno AI가 로봇처럼 뚝뚝 끊어 부르는 현상 방지)\n`;
-                gPrompt += `- 괄호 사용 오류 금지: 악기 연주나 보컬 톤 지시어는 무조건 대괄호 [ ] 안에 넣고, 소괄호 ( )는 오직 아이들이 외치는 짧은 추임새(예: 야호!)에만 써라. 절대 괄호를 중첩해서 (얌얌(yam-yam)!) 처럼 쓰지 마라.\n`;
+                gPrompt += `- 괄호 호흡 제어(브래킷 이론): [Verse 1], [Chorus] 등 구조 태그 바로 아랫줄에 '[Close-mic, very soft whisper]'처럼 보컬 지시어를 넣어 목소리 톤을 잠가라.\n`;
+                gPrompt += `- 가사 제한: 보컬 에러 방지를 위해 모든 구조 태그 아래의 실질 가사는 무조건 4줄 이내로 끊으라.\n`;
+                gPrompt += `- 기호 통제 1: 말줄임표(...)와 하이픈(-)은 기괴한 울음소리를 유발하므로 절대 쓰지 말고, 대신 호흡을 위해 중간에 쉼표(,)를 쓰거나 모음 연장(예: 코오, 자아) 또는 틸드(~)를 써라.\n`;
+                gPrompt += `- 기호 통제 2: 가사 문장 맨 끝에는 절대 쉼표나 마침표를 찍지 마라. (Suno AI가 로봇처럼 끊어 부르는 현상 방지)\n`;
+                gPrompt += `- 괄호 제한: 보컬 톤과 악기는 무조건 대괄호 [ ], 짧은 추임새는 소괄호 ( )를 쓰고 절대 중첩 금지.\n`;
                 gPrompt += `- 종결: 가사 맨 마지막 줄에는 무조건 [Fade Out]과 [End] 태그를 순서대로 넣어 무한 반복을 막아라.\n`;
                 if (finalOno) gPrompt += `${bOnoDir}\n`;
 
@@ -1163,7 +1165,13 @@ ${overridePayload.baseStyle}, (이 괄호를 지우고 방금 제미나이가 2.
                         };
                     }
 
-                    lyricBox.value = parsed.lyrics.trim();
+                    // [안전장치 추가] 보컬 오작동(흐느낌, 끊김)을 막기 위한 강제 클리닝 정규식
+                    let cleanLyrics = parsed.lyrics || "";
+                    cleanLyrics = cleanLyrics.replace(/\.{2,}/g, ''); // 말줄임표(...) 강제 제거
+                    cleanLyrics = cleanLyrics.replace(/-/g, ''); // 하이픈(-) 강제 제거
+                    cleanLyrics = cleanLyrics.replace(/[,\.]+(?=\s*$)/gm, ''); // 다중 줄 끝의 쉼표/마침표 강제 제거
+
+                    lyricBox.value = cleanLyrics.trim();
                     lyricBox.classList.add('typing-cursor');
 
                     // 🌟 3단 샌드위치 하이브리드 Style 조립 (3-Tier) 🌟
