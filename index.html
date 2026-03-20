@@ -604,7 +604,11 @@
                                     </summary>
                                     <div class="px-4 pb-4 border-t border-slate-100 pt-3 mt-1 cursor-text">
                                         <textarea id="prompt-thumbnail" readonly
-                                            class="w-full text-[0.7rem] font-mono text-slate-500 bg-slate-50 rounded-xl p-3 resize-none h-[120px] outline-none leading-relaxed border border-slate-100 custom-scrollbar break-words whitespace-pre-wrap mt-0">A magical, multi-layered 3D papercraft illustration of a cute little girl smiling and holding hands with a friendly, colorful octopus, playfully keeping her fingers away from her mouth. In the foreground, a vintage turntable and a stylish colorful vinyl record crafted from cut-out paper are playing, with a beautifully designed music album cover leaning against it. Vibrant underwater pastel colors, cheerful deep blues and bright corals, clean light aqua background. Highly detailed paper textures, soft glowing backlights illuminating the edges of the paper layers. Render the Korean text "**쪽쪽 안녕 문어송**" clearly on the album cover. High quality, cozy lighting, 16:9 aspect ratio.</textarea>
+                                            class="w-full text-[0.7rem] font-mono text-slate-500 bg-slate-50 rounded-xl p-3 resize-none h-[120px] outline-none leading-relaxed border border-slate-100 custom-scrollbar break-words whitespace-pre-wrap mt-0">A magical, multi-layered 3D papercraft illustration. Main scene: [AGE_KEYWORD] [VISUAL_DESC]. In the foreground, a vintage turntable and a stylish colorful vinyl record crafted from cut-out paper are playing, with a beautifully designed music album cover leaning against it. 
+
+ENVIRONMENT SETTING: Strictly follow the background location described in the main scene. DO NOT randomly add nature elements, plants, trees, or forests unless explicitly mentioned in the scene. 
+
+Highly detailed paper textures, soft glowing backlights. Render the Korean text "[SONG_TITLE]" clearly on the album cover. High quality, cozy lighting, 16:9 aspect ratio.</textarea>
                                     </div>
                                 </details>
                             </div>
@@ -628,7 +632,17 @@
                                     </summary>
                                     <div class="px-4 pb-4 border-t border-slate-100 pt-3 mt-1 cursor-text">
                                         <textarea id="prompt-video" readonly
-                                            class="w-full text-[0.7rem] font-mono text-slate-500 bg-slate-50 rounded-xl p-3 resize-none h-[120px] outline-none leading-relaxed border border-slate-100 custom-scrollbar break-words whitespace-pre-wrap mt-0">Animate the provided image as a seamless, infinite looping cinemagraph. The camera must remain absolutely static with zero panning, zooming, or tilting. In the foreground, the papercraft vintage turntable and vinyl record must spin smoothly and continuously at a constant, steady speed. The little girl and the octopus should have only very subtle, gentle breathing motions. The papercraft underwater elements and soft glowing backlights should softly and continuously undulate. No sudden movements, no scene changes, no new elements appearing. Make the first frame and the last frame perfectly match for a seamless 8-second loop. Relaxing, calming, and cozy atmosphere.</textarea>
+                                            class="w-full text-[0.7rem] font-mono text-slate-500 bg-slate-50 rounded-xl p-3 resize-none h-[120px] outline-none leading-relaxed border border-slate-100 custom-scrollbar break-words whitespace-pre-wrap mt-0">Animate the provided image as a serene, ambient cinemagraph. The camera must remain absolutely locked and static with zero panning, zooming, or tilting. 
+
+CRITICAL MOTION INSTRUCTION: DO NOT spin, rotate, or move any objects in a single direction. Instead, all movements must be subtle, oscillating micro-motions. 
+
+Focus on: 
+1) Gentle breathing motions of the characters. 
+2) Soft glowing and rhythmic pulsating of the backlights. 
+3) Slow, back-and-forth undulating of the background elements related to [VISUAL_DESC]. 
+4) Add slow-moving magical dust or floating particles in the air. 
+
+No sudden movements, no scene changes. Atmosphere is relaxing, calming, and highly cozy.</textarea>
                                     </div>
                                 </details>
                             </div>
@@ -1080,8 +1094,8 @@ ${overridePayload.baseStyle}, (이 괄호를 지우고 방금 제미나이가 2.
             document.getElementById('thumb-title-input').addEventListener('input', function (e) {
                 if (!overridePayload.thumbTemplate) return;
                 const title = e.target.value || "여기에 제목 입력";
-                const vDesc = window.currentVisualDesc || "a cheerful cute little child";
-                const aKey = overridePayload.ageKeyword || "a cute baby";
+                const vDesc = window.currentVisualDesc || "[VISUAL_DESC]";
+                const aKey = overridePayload.ageKeyword || "[AGE_KEYWORD]";
                 document.getElementById('prompt-thumbnail').value = overridePayload.thumbTemplate
                     .replace("[AGE_KEYWORD]", aKey)
                     .replace("[VISUAL_DESC]", vDesc)
@@ -1103,10 +1117,10 @@ ${overridePayload.baseStyle}, (이 괄호를 지우고 방금 제미나이가 2.
                     fallbackGuide.classList.remove('hidden');
 
                     // 폴백 문자열 생성
-                    let fallbackDesc = "a cheerful cute little child";
+                    let fallbackDesc = "[VISUAL_DESC]";
                     window.currentVisualDesc = fallbackDesc;
-                    const manualTitle = document.getElementById('thumb-title-input').value || "노래 제목 입력";
-                    const aKey = overridePayload.ageKeyword || "a cute baby";
+                    const manualTitle = document.getElementById('thumb-title-input').value || "[SONG_TITLE]";
+                    const aKey = overridePayload.ageKeyword || "[AGE_KEYWORD]";
                     document.getElementById('prompt-thumbnail').value = overridePayload.thumbTemplate
                         .replace("[AGE_KEYWORD]", aKey)
                         .replace("[VISUAL_DESC]", fallbackDesc)
