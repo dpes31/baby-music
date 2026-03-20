@@ -881,6 +881,14 @@
                 const purpose = document.querySelector('input[name="purpose"]:checked').value;
                 const targetAge = document.querySelector('input[name="targetAge"]:checked').value; // V25 월령 수집
 
+                // [V26] 사용자의 연령 선택에 따라 정확한 영문 명칭 할당
+                let ageKeyword = "";
+                if (targetAge === 'stage1') ageKeyword = "a 6-month-old cute baby";
+                else if (targetAge === 'stage2') ageKeyword = "a 2-year-old toddler";
+                else if (targetAge === 'stage3') ageKeyword = "a 3-year-old toddler";
+                else if (targetAge === 'stage4') ageKeyword = "a 5-year-old kindergarten kid";
+                else if (targetAge === 'stage5') ageKeyword = "a 10-year-old elementary school student";
+
                 let themeStrRaw = themeInput.value.trim();
                 let rawThemeForMedia = themeStrRaw || "아이의 즐거운 일상";
                 let themeStr = themeStrRaw;
@@ -1003,7 +1011,7 @@
                 gPrompt += `5. 줄바꿈을 절대 하지 마라.\n\n`;
 
                 gPrompt += `<곡 구조 및 기호 호흡 제어 (Suno V5 버그 방지 - CRITICAL)>\n`;
-                gPrompt += `- [Intro] 통합: 인트로는 [Intro: short, under 5 seconds, 악기 묘사]처럼 단 하나의 대괄호 안에 모든 지시어를 묶어라. 두 줄로 나누지 마라.\n`;
+                gPrompt += `- [Intro] 통합: 인트로는 [Intro: short, under 15 seconds, 악기 묘사]처럼 단 하나의 대괄호 안에 모든 지시어를 묶어라. 두 줄로 나누지 마라.\n`;
                 gPrompt += `- 괄호 호흡 제어(브래킷 이론): [Verse 1], [Chorus] 등 구조 태그 바로 아랫줄에 '[Close-mic, very soft whisper]'처럼 보컬 지시어를 넣어 목소리 톤을 잠가라.\n`;
                 gPrompt += `- 가사 제한: 보컬 에러 방지를 위해 모든 구조 태그 아래의 실질 가사는 무조건 4줄 이내로 끊으라.\n`;
                 gPrompt += `- 기호 통제 1: 말줄임표(...)와 하이픈(-)은 기괴한 울음소리를 유발하므로 절대 쓰지 말고, 대신 호흡을 위해 중간에 쉼표(,)를 쓰거나 모음 연장(예: 코오, 자아) 또는 틸드(~)를 써라.\n`;
@@ -1013,7 +1021,7 @@
                 if (finalOno) gPrompt += `${bOnoDir}\n`;
 
                 // JSON 출력 강제 (3-Tier 분리 구조 반영)
-                let apiPrompt = gPrompt + `\n<출력 지침 (CRITICAL)>\n반드시 아래 JSON 형식으로만 출력하라. 마크다운 언어나 다른 설명은 절대 금지.\n{\n  "lyrics": "작사된 전체 가사",\n  "style": "생성된 추가 악기와 무드 태그 (영문 60자 내외)",\n  "english_visual_description": "곡 분위기를 잘 나타내는 상세한 영문 시각 묘사 (배경 및 색감 포함)",\n  "song_title": "곡 제목이나 핵심 훅 가사 한 줄 (한국어)"\n}\n`;
+                let apiPrompt = gPrompt + `\n<출력 지침 (CRITICAL)>\n반드시 아래 JSON 형식으로만 출력하라. 마크다운 언어나 다른 설명은 절대 금지.\n{\n  "lyrics": "작사된 전체 가사",\n  "style": "생성된 추가 악기와 무드 태그 (영문 60자 내외)",\n  "english_visual_description": "노래 주제를 1~2문장으로 묘사하는 디테일한 영문 시각 묘사. 반드시 1) 캐릭터의 구체적인 행동(포즈), 2) 상호작용하는 사물이나 동물(예: friendly octopus, toothbrush 등), 3) 명확한 배경 장소(예: in a cozy bedroom, under the sea 등)를 포함할 것.",\n  "song_title": "곡 제목이나 핵심 훅 가사 한 줄 (한국어)"\n}\n`;
 
                 let fallbackPrompt = gPrompt + `<출력 지침 (CRITICAL)>\n수노(Suno) AI 입력창에 바로 복사/붙여넣기 할 수 있도록, 어떠한 인사말도 없이 **3개의 마크다운 코드 블록(\`\`\`텍스트\`\`\`)**만 순서대로 깔끔하게 출력하라.\n각 코드 블록 바로 위에는 반드시 아래 제시된 [타이틀]을 굵은 글씨(Bold)로 적어 구분하라.\n\n### 1. Song Title (Suno 'Title' 칸에 복사하세요 혹은 썸네일/영상 제목으로 쓰세요)\n- JSON 껍데기 없이, 작성된 노래의 **한국어 제목(핵심 훅 가사 한 줄)** 원본만 첫 번째 코드 블록 안에 작성할 것.\n\n### 2. Lyrics (Suno 'Lyrics' 칸에 복사하세요)\n- JSON 껍데기 없이, 수노 Lyrics 칸에 바로 넣을 수 있는 "순수한 가사 텍스트" 원본만 두 번째 코드 블록 안에 작성할 것.\n\n### 3. Style of Music (Suno 'Style of Music' 칸에 복사하세요)\n- 수노 Style of Music 칸에 넣을 가사에 어울리는 장르/악기/무드 영문 키워드들을 쉼표(,)로 나열한 1줄 텍스트만 세 번째 코드 블록 안에 작성할 것.\n`;
 
@@ -1024,10 +1032,24 @@
                 else if (purpose === 'habit') { colorVibe = "fresh green and sunny"; lightVibe = "clean bright morning sunlight"; }
                 else if (purpose === 'story') { colorVibe = "mystical purple and glowing magical"; lightVibe = "sparkling fairy dust illumination"; }
 
-                let thumbTemplate = `A magical, multi-layered 3D papercraft illustration of [VISUAL_DESC]. In the foreground, a vintage turntable and a stylish colorful vinyl record crafted from cut-out paper are playing, with a beautifully designed music album cover leaning against it. ${colorVibe} colors. Highly detailed paper textures, ${lightVibe}. Render the Korean text "[SONG_TITLE]" clearly on the album cover. High quality, cozy lighting, 16:9 aspect ratio.`;
+                let thumbTemplate = `A magical, multi-layered 3D papercraft illustration. Main scene: [AGE_KEYWORD] [VISUAL_DESC]. In the foreground, a vintage turntable and a stylish colorful vinyl record crafted from cut-out paper are playing, with a beautifully designed music album cover leaning against it. 
+
+ENVIRONMENT SETTING: Strictly follow the background location described in the main scene. DO NOT randomly add nature elements, plants, trees, or forests unless explicitly mentioned in the scene. 
+
+Highly detailed paper textures, ${lightVibe}. Render the Korean text "[SONG_TITLE]" clearly on the album cover. High quality, cozy lighting, 16:9 aspect ratio.`;
                 document.getElementById('prompt-thumbnail').value = "✨ 요정이 썸네일 프롬프트를 변환 중입니다...";
 
-                let videoTemplate = `Animate the provided image as a seamless, infinite looping cinemagraph. The camera must remain absolutely static with zero panning, zooming, or tilting. In the foreground, the papercraft vintage turntable and vinyl record must spin smoothly and continuously at a constant, steady speed. The background elements related to [VISUAL_DESC] should softly and continuously undulate. No sudden movements, no scene changes, no new elements appearing. Make the first frame and the last frame perfectly match for a seamless 8-second loop. Relaxing, calming, and cozy atmosphere.`;
+                let videoTemplate = `Animate the provided image as a serene, ambient cinemagraph. The camera must remain absolutely locked and static with zero panning, zooming, or tilting. 
+
+CRITICAL MOTION INSTRUCTION: DO NOT spin, rotate, or move any objects in a single direction. Instead, all movements must be subtle, oscillating micro-motions. 
+
+Focus on: 
+1) Gentle breathing motions of the characters. 
+2) Soft glowing and rhythmic pulsating of the backlights. 
+3) Slow, back-and-forth undulating of the background elements related to [VISUAL_DESC]. 
+4) Add slow-moving magical dust or floating particles in the air. 
+
+No sudden movements, no scene changes. Atmosphere is relaxing, calming, and highly cozy.`;
                 document.getElementById('prompt-video').value = "✨ 요정이 비디오 프롬프트를 변환 중입니다...";
 
                 // Payload 전역 및 화면 숨김 값에 저장
@@ -1035,6 +1057,7 @@
                 overridePayload.temp = finalTemp;
                 overridePayload.topP = bTopP;
                 overridePayload.freq = bFreq;
+                overridePayload.ageKeyword = ageKeyword;
                 overridePayload.thumbTemplate = thumbTemplate;
                 overridePayload.videoTemplate = videoTemplate;
 
@@ -1058,7 +1081,11 @@ ${overridePayload.baseStyle}, (이 괄호를 지우고 방금 제미나이가 2.
                 if (!overridePayload.thumbTemplate) return;
                 const title = e.target.value || "여기에 제목 입력";
                 const vDesc = window.currentVisualDesc || "a cheerful cute little child";
-                document.getElementById('prompt-thumbnail').value = overridePayload.thumbTemplate.replace("[VISUAL_DESC]", vDesc).replace("[SONG_TITLE]", title);
+                const aKey = overridePayload.ageKeyword || "a cute baby";
+                document.getElementById('prompt-thumbnail').value = overridePayload.thumbTemplate
+                    .replace("[AGE_KEYWORD]", aKey)
+                    .replace("[VISUAL_DESC]", vDesc)
+                    .replace("[SONG_TITLE]", title);
             });
 
             /** [통신] 5. 구글 API 비동기 Fetch 통신 */
@@ -1079,7 +1106,11 @@ ${overridePayload.baseStyle}, (이 괄호를 지우고 방금 제미나이가 2.
                     let fallbackDesc = "a cheerful cute little child";
                     window.currentVisualDesc = fallbackDesc;
                     const manualTitle = document.getElementById('thumb-title-input').value || "노래 제목 입력";
-                    document.getElementById('prompt-thumbnail').value = overridePayload.thumbTemplate.replace("[VISUAL_DESC]", fallbackDesc).replace("[SONG_TITLE]", manualTitle);
+                    const aKey = overridePayload.ageKeyword || "a cute baby";
+                    document.getElementById('prompt-thumbnail').value = overridePayload.thumbTemplate
+                        .replace("[AGE_KEYWORD]", aKey)
+                        .replace("[VISUAL_DESC]", fallbackDesc)
+                        .replace("[SONG_TITLE]", manualTitle);
                     document.getElementById('prompt-video').value = overridePayload.videoTemplate.replace("[VISUAL_DESC]", fallbackDesc);
 
                     // 경고 문구는 팝업 최상단 안내창에 표시하고, 결합 방식에 대한 시각적 예시 제공
@@ -1190,7 +1221,10 @@ ${overridePayload.baseStyle}, (이 괄호를 지우고 방금 제미나이가 2.
                     // 썸네일/비디오 프롬프트 동적 치환
                     window.currentVisualDesc = parsed.english_visual_description;
                     document.getElementById('thumb-title-input').value = parsed.song_title;
-                    let finalThumb = overridePayload.thumbTemplate.replace("[VISUAL_DESC]", parsed.english_visual_description).replace("[SONG_TITLE]", parsed.song_title);
+                    let finalThumb = overridePayload.thumbTemplate
+                        .replace("[AGE_KEYWORD]", overridePayload.ageKeyword)
+                        .replace("[VISUAL_DESC]", parsed.english_visual_description)
+                        .replace("[SONG_TITLE]", parsed.song_title);
                     document.getElementById('prompt-thumbnail').value = finalThumb;
 
                     let finalVideo = overridePayload.videoTemplate.replace("[VISUAL_DESC]", parsed.english_visual_description);
