@@ -604,9 +604,12 @@
                                     </summary>
                                     <div class="px-4 pb-4 border-t border-slate-100 pt-3 mt-1 cursor-text">
                                         <textarea id="prompt-thumbnail" readonly
-                                            class="w-full text-[0.7rem] font-mono text-slate-500 bg-slate-50 rounded-xl p-3 resize-none h-[120px] outline-none leading-relaxed border border-slate-100 custom-scrollbar break-words whitespace-pre-wrap mt-0">A magical, multi-layered 3D papercraft illustration. Main scene: [AGE_KEYWORD] [VISUAL_DESC]. In the foreground, a vintage turntable and a stylish colorful vinyl record crafted from cut-out paper are playing, with a beautifully designed music album cover leaning against it. 
+                                            class="w-full text-[0.7rem] font-mono text-slate-500 bg-slate-50 rounded-xl p-3 resize-none h-[120px] outline-none leading-relaxed border border-slate-100 custom-scrollbar break-words whitespace-pre-wrap mt-0">A magical, multi-layered 3D papercraft illustration. Main scene: [AGE_KEYWORD] [VISUAL_DESC]. In the foreground, a vintage turntable and a stylish colorful vinyl record crafted from cut-out paper are placed, with a beautifully designed music album cover leaning against it. 
 
-ENVIRONMENT SETTING: Strictly follow the background location described in the main scene. DO NOT randomly add nature elements, plants, trees, or forests unless explicitly mentioned in the scene. 
+ENVIRONMENT & EXCLUSION RULES: 
+1. LOGICAL BACKGROUND: Strictly follow the background location described in the main scene (e.g., if the scene involves a toilet or bathing, the background MUST be a bathroom, NOT a bedroom). 
+2. NO NATURE CROSSTALK: DO NOT randomly add nature elements, plants, trees, or forests unless explicitly mentioned in the scene. 
+3. NO MUSIC SYMBOLS: ABSOLUTELY NO floating musical notes, equalizers, audio spectrums, or abstract music symbols.
 
 Highly detailed paper textures, dim soothing moonlight. Render the Korean text "[SONG_TITLE]" clearly on the album cover. High quality, cozy lighting, 16:9 aspect ratio.</textarea>
                                     </div>
@@ -1035,9 +1038,17 @@ No sudden movements, no scene changes. Atmosphere is relaxing, calming, and high
                 if (finalOno) gPrompt += `${bOnoDir}\n`;
 
                 // JSON 출력 강제 (3-Tier 분리 구조 반영)
-                let apiPrompt = gPrompt + `\n<출력 지침 (CRITICAL)>\n반드시 아래 JSON 형식으로만 출력하라. 마크다운 언어나 다른 설명은 절대 금지.\n{\n  "lyrics": "작사된 전체 가사",\n  "style": "생성된 추가 악기와 무드 태그 (영문 60자 내외)",\n  "english_visual_description": "노래 주제를 1~2문장으로 묘사하는 디테일한 영문 시각 묘사. 반드시 1) 캐릭터의 구체적인 행동(포즈), 2) 상호작용하는 사물이나 동물(예: friendly octopus, toothbrush 등), 3) 명확한 배경 장소(예: in a cozy bedroom, under the sea 등)를 포함할 것.",\n  "song_title": "곡 제목이나 핵심 훅 가사 한 줄 (한국어)"\n}\n`;
+                let apiPrompt = gPrompt + `\n<출력 지침 (CRITICAL)>\n반드시 아래 JSON 형식으로만 출력하라. 마크다운 언어나 다른 설명은 절대 금지.\n{\n  "lyrics": "작사된 전체 가사",\n  "style": "생성된 추가 악기와 무드 태그 (영문 60자 내외)",\n  "english_visual_description": "노래 주제를 1~2문장으로 묘사하는 디테일한 영문 시각 묘사. 반드시 1) 캐릭터의 구체적인 행동, 2) 상호작용 사물, 3) 행동에 논리적으로 완벽하게 부합하는 정확한 배경 장소(예: 배변/씻기=in a tiled bathroom, 식사=in a kitchen, 수면=in a cozy bedroom)를 명시할 것.",\n  "song_title": "곡 제목이나 핵심 훅 가사 한 줄 (한국어)"\n}\n`;
 
-                let fallbackPrompt = gPrompt + `<출력 지침 (CRITICAL)>\n수노(Suno) AI 입력창에 바로 복사/붙여넣기 할 수 있도록, 어떠한 인사말도 없이 **3개의 마크다운 코드 블록(\`\`\`텍스트\`\`\`)**만 순서대로 깔끔하게 출력하라.\n각 코드 블록 바로 위에는 반드시 아래 제시된 [타이틀]을 굵은 글씨(Bold)로 적어 구분하라.\n\n### 1. Song Title (Suno 'Title' 칸에 복사하세요 혹은 썸네일/영상 제목으로 쓰세요)\n- JSON 껍데기 없이, 작성된 노래의 **한국어 제목(핵심 훅 가사 한 줄)** 원본만 첫 번째 코드 블록 안에 작성할 것.\n\n### 2. Lyrics (Suno 'Lyrics' 칸에 복사하세요)\n- JSON 껍데기 없이, 수노 Lyrics 칸에 바로 넣을 수 있는 "순수한 가사 텍스트" 원본만 두 번째 코드 블록 안에 작성할 것.\n\n### 3. Style of Music (Suno 'Style of Music' 칸에 복사하세요)\n- 수노 Style of Music 칸에 넣을 가사에 어울리는 장르/악기/무드 영문 키워드들을 쉼표(,)로 나열한 1줄 텍스트만 세 번째 코드 블록 안에 작성할 것.\n`;
+                let fallbackPrompt = gPrompt + `<1단계 출력 지침 (CRITICAL - 복사 버튼 활성화)>\n수노(Suno) AI 입력창에 바로 복사/붙여넣기 할 수 있도록, 어떠한 인사말도 없이 반드시 **마크다운 코드 블록(\`\`\`text 와 \`\`\` 사이)**을 사용하여 3가지를 순서대로 출력하라. (반드시 코드 블록을 써야만 사용자가 복사 버튼을 누를 수 있다)\n\n`
+                + `### 1. Song Title\n- 한국어 제목 원본만 첫 번째 코드 블록(\`\`\`text ... \`\`\`) 안에 작성.\n\n`
+                + `### 2. Lyrics\n- 수노에 바로 넣을 수 있는 순수한 가사 텍스트 원본만 두 번째 코드 블록(\`\`\`text ... \`\`\`) 안에 작성.\n\n`
+                + `### 3. Style of Music\n- 영문 키워드를 쉼표로 나열한 1줄 텍스트만 세 번째 코드 블록(\`\`\`text ... \`\`\`) 안에 작성.\n\n`
+                + `<2단계 안내 문구 출력 (CRITICAL)>\n위 3개의 코드 블록 출력이 모두 끝난 후, 맨 하단에 정확히 아래 문장을 일반 텍스트로 덧붙여라.\n"**🎵 1단계 음악 생성이 완료되었습니다! '2단계'라고 말씀 주시면 구글 트렌드 및 SEO 전략 기반의 유튜브 세팅을 도와드리겠습니다.**"\n\n`
+                + `<2단계 동작 사전 학습 규칙 (사용자가 '2단계'라고 입력할 경우)>\n사용자가 다음 채팅에서 '2단계'라고 말하면, 방금 1단계에서 생성한 음원의 주제를 분석하고 구글 트렌드 및 유튜브 SEO 전략에 의거하여 바이럴 될 수 있도록 다음 3가지를 출력할 것:\n`
+                + `1. 유튜브 제목: 클릭을 유도하는 매력적이고 후킹(Hooking)한 제목 3가지 추천\n`
+                + `2. 설명: 곡의 스토리텔링 소개, 시청자 참여 유도 멘트, 그리고 바이럴 해시태그(#) 5개 이상 포함\n`
+                + `3. 태그: 유튜브 검색 엔진 노출 최적화를 위한 쉼표(,)로 구분된 검색어 태그 15개 내외\n`;
 
                 // --- 4.5 유튜브 및 영상 프롬프트 실시간 동적 생성 (V18 업데이트) ---
                 let colorVibe = "cozy warm pastel"; let lightVibe = "soft glowing backlights";
@@ -1046,9 +1057,12 @@ No sudden movements, no scene changes. Atmosphere is relaxing, calming, and high
                 else if (purpose === 'habit') { colorVibe = "fresh green and sunny"; lightVibe = "clean bright morning sunlight"; }
                 else if (purpose === 'story') { colorVibe = "mystical purple and glowing magical"; lightVibe = "sparkling fairy dust illumination"; }
 
-                let thumbTemplate = `A magical, multi-layered 3D papercraft illustration. Main scene: [AGE_KEYWORD] [VISUAL_DESC]. In the foreground, a vintage turntable and a stylish colorful vinyl record crafted from cut-out paper are playing, with a beautifully designed music album cover leaning against it. 
+                let thumbTemplate = `A magical, multi-layered 3D papercraft illustration. Main scene: [AGE_KEYWORD] [VISUAL_DESC]. In the foreground, a vintage turntable and a stylish colorful vinyl record crafted from cut-out paper are placed, with a beautifully designed music album cover leaning against it. 
 
-ENVIRONMENT SETTING: Strictly follow the background location described in the main scene. DO NOT randomly add nature elements, plants, trees, or forests unless explicitly mentioned in the scene. 
+ENVIRONMENT & EXCLUSION RULES: 
+1. LOGICAL BACKGROUND: Strictly follow the background location described in the main scene (e.g., if the scene involves a toilet or bathing, the background MUST be a bathroom, NOT a bedroom). 
+2. NO NATURE CROSSTALK: DO NOT randomly add nature elements, plants, trees, or forests unless explicitly mentioned in the scene. 
+3. NO MUSIC SYMBOLS: ABSOLUTELY NO floating musical notes, equalizers, audio spectrums, or abstract music symbols.
 
 Highly detailed paper textures, dim soothing moonlight. Render the Korean text "[SONG_TITLE]" clearly on the album cover. High quality, cozy lighting, 16:9 aspect ratio.`;
                 document.getElementById('prompt-thumbnail').value = "✨ 요정이 썸네일 프롬프트를 변환 중입니다...";
